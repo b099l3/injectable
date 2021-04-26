@@ -21,7 +21,10 @@ class MockTypeResolver extends ImportableTypeResolverImpl {
 
 void main() async {
   var resolvedInput = await resolveInput('test/resolver/samples/source.dart');
-  var dependencyResolver = DependencyResolver(MockTypeResolver());
+  var dependencyResolver;
+  setUp(() {
+    dependencyResolver = DependencyResolver(MockTypeResolver());
+  });
 
   test('Simple Factory no dependencies', () {
     var simpleFactoryType = resolvedInput.library.findType('SimpleFactory')!;
