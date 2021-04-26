@@ -102,6 +102,6 @@ void main() {
 
 String generate(DependencyConfig input) {
   final statement = buildLazyRegisterFun(input);
-  final emitter = DartEmitter(Allocator.none, true, true);
+  final emitter = DartEmitter(orderDirectives: true, useNullSafetySyntax: true);
   return statement.accept(emitter).toString();
 }
