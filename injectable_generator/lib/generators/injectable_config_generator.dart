@@ -61,9 +61,10 @@ class InjectableConfigGenerator extends GeneratorForAnnotation<InjectableInit> {
       asExtension: asExtension,
     );
     final emitter = DartEmitter(
-        allocator: Allocator.simplePrefixing(),
-        orderDirectives: true,
-        useNullSafetySyntax: usesNullSafety);
+      allocator: Allocator.simplePrefixing(),
+      orderDirectives: true,
+      useNullSafetySyntax: usesNullSafety,
+    );
     return DartFormatter().format(generatedLib.accept(emitter).toString());
   }
 

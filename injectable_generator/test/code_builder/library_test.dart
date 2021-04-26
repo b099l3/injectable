@@ -61,7 +61,14 @@ extension GetItInjectableX on GetIt {
 
 String generate(List<DependencyConfig> input, {bool asExt = false}) {
   final library = generateLibrary(
-      dependencies: input, initializerName: 'init', asExtension: asExt);
-  final emitter = DartEmitter(orderDirectives: true);
+    dependencies: input,
+    initializerName: 'init',
+    asExtension: asExt,
+  );
+  final emitter = DartEmitter(
+    allocator: Allocator.none,
+    orderDirectives: true,
+    useNullSafetySyntax: false,
+  );
   return DartFormatter().format(library.accept(emitter).toString());
 }
